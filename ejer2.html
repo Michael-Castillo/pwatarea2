@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2</title>
+  <style>
+    body {
+      background-color: rgb(145, 204, 145);
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 50px;
+    }
+
+    .container {
+      width: 300px; /* Ajusta el ancho de la calculadora */
+      margin: 0 auto;
+      padding: 20px;
+      border: 5px solid #ccc;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 20px; /* Ajusta el tamaño de fuente del campo de entrada */
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    button {
+      flex: 1;
+      height: 40px;
+      margin: 0 2px;
+      font-size: 16px; /* Ajusta el tamaño de fuente de los botones */
+    }
+
+    .imagen {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .imagen img {
+      width: 50px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Calculadora</h1>
+  <div class="container">
+    <input type="text" id="result" readonly>
+    <div class="button-row">
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button onclick="appendOperator('/')">/</button>
+    </div>
+    <div class="button-row">
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button onclick="appendOperator('*')">*</button>
+    </div>
+    <div class="button-row">
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button onclick="appendOperator('-')">-</button>
+    </div>
+    <div class="button-row">
+      <button onclick="appendNumber(0)">0</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="clearResult()">C</button>
+      <button onclick="appendOperator('+')">+</button>
+    </div>
+  </div>
+
+  <div class="imagen">
+    <a href="index.html"><img src="img/00.png" alt="Volver al inicio"></a>
+  </div>
+
+  <script>
+    let resultField = document.getElementById('result');
+    let currentExpression = '';
+
+    function appendNumber(number) {
+      currentExpression += number;
+      resultField.value = currentExpression;
+    }
+
+    function appendOperator(operator) {
+      currentExpression += operator;
+      resultField.value = currentExpression;
+    }
+
+    function calculate() {
+      try {
+        let result = eval(currentExpression);
+        resultField.value = result;
+        currentExpression = result;
+      } catch (error) {
+        resultField.value = 'Error';
+      }
+    }
+
+    function clearResult() {
+      currentExpression = '';
+      resultField.value = '';
+    }
+  </script>
+</body>
+
+</html>

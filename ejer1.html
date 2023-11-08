@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1</title>
+</head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+  }
+
+  #contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #Elemento {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(0, 119, 255);
+    color: white;
+    text-align: center;
+    line-height: 200px;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  #Boton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  #Boton:hover {
+    background-color: #45a049;
+  }
+
+  #imagen {
+    margin-bottom: 20px;
+    width: 50x;
+    height: 50px;
+  }
+</style>
+</head>
+
+<body>
+  <div id="contenedor">
+    <div id="Elemento">Cambio de color</div>
+    <button id="Boton">Haz clic aquí</button>
+    <br><br><br><br><br>
+    <a href="index.html">
+      <img id="imagen" src="img/00.png" alt="Volver al inicio"></a>
+  </div>
+
+
+  <script>
+    document.getElementById("Boton").addEventListener("click", function () {
+      var elemento = document.getElementById("Elemento");
+      elemento.style.backgroundColor = "red";
+      elemento.style.color = "black";
+    });
+  </script>
+</body>
+
+</html>

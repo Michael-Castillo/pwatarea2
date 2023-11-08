@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .pregunta {
+            margin-bottom: 10px;
+        }
+
+        .opciones input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .boton {
+            display: block;
+            margin-top: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .puntuacion-final {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Juego de Preguntas y Respuestas</h1>
+        <div id="juego">
+            <div class="pregunta" id="pregunta"></div>
+            <div class="opciones" id="opciones"></div>
+            <button class="boton" onclick="evaluarRespuesta()">Siguiente</button>
+        </div>
+        <div id="puntuacionFinal" class="puntuacion-final" style="display: none;">
+            <p>Tu puntuación final es: <span id="puntuacion"></span> de <span id="totalPreguntas"></span></p>
+            <a href="index.html"><img src="img/00.png" alt="Volver al inicio" width="50px"></a>
+        </div>
+    </div>
+    <script>
+        // Definir las preguntas y respuestas
+        var preguntas = [
+            {
+                pregunta: "1) ¿Cuál es la capital de Francia?",
+                opciones: ["París", "Londres", "Madrid", "Roma"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "2) ¿Cuál es el río más largo del mundo?",
+                opciones: ["Amazonas", "Nilo", "Yangtsé", "Misisipi"],
+                respuestaCorrecta: 1
+            },
+            {
+                pregunta: "3) ¿Cuál es el planeta más grande del sistema solar?",
+                opciones: ["Júpiter", "Saturno", "Urano", "Neptuno"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "4) ¿Cuál es el océano más grande del mundo?",
+                opciones: ["Pacífico", "Atlántico", "Índico", "Ártico"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "5) ¿Cuál es el país más poblado del mundo?",
+                opciones: ["China", "India", "Estados Unidos", "Indonesia"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "6) ¿Cuál es el país más grande del mundo?",
+                opciones: ["Rusia", "Canadá", "China", "Estados Unidos"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "7) ¿Cuál es el monte más alto del mundo?",
+                opciones: ["Monte Everest", "K2", "Kilimanjaro", "Aconcagua"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "8) ¿Cuál es el instrumento musical más antiguo?",
+                opciones: ["Flauta", "Tambor", "Lira", "Arpa"],
+                respuestaCorrecta: 0
+            },
+            {
+                pregunta: "9) ¿Cuál es el país con más islas en el mundo?",
+                opciones: ["Suecia", "Filipinas", "Indonesia", "Japón"],
+                respuestaCorrecta: 2
+            },
+            {
+                pregunta: "10) ¿Cuál es el animal más grande del mundo?",
+                opciones: ["Elefante", "Ballena azul", "Jirafa", "Hipopótamo"],
+                respuestaCorrecta: 1
+            }
+        ];
+
+        // Inicializar variables
+        var puntuacion = 0;
+        var preguntaActual = 0;
+
+        // Función para mostrar la pregunta actual
+        function mostrarPregunta() {
+            var pregunta = preguntas[preguntaActual];
+            document.getElementById("pregunta").innerHTML = pregunta.pregunta;
+
+            var opcionesHTML = "";
+            for (var i = 0; i < pregunta.opciones.length; i++) {
+                opcionesHTML += '<label><input type="radio" name="respuesta" value="' + i + '">' + pregunta.opciones[i] + '</label><br>';
+            }
+            document.getElementById("opciones").innerHTML = opcionesHTML;
+        }
+
+        // Función para evaluar la respuesta seleccionada
+        function evaluarRespuesta() {
+            var respuesta = parseInt(document.querySelector('input[name="respuesta"]:checked').value);
+            if (respuesta === preguntas[preguntaActual].respuestaCorrecta) {
+                puntuacion++;
+            }
+
+            preguntaActual++;
+
+            if (preguntaActual < preguntas.length) {
+                mostrarPregunta();
+            } else {
+                mostrarPuntuacionFinal();
+            }
+        }
+
+        // Función para mostrar la puntuación final
+        function mostrarPuntuacionFinal() {
+            document.getElementById("juego").style.display = "none";
+            document.getElementById("puntuacion").innerHTML = puntuacion;
+            document.getElementById("totalPreguntas").innerHTML = preguntas.length;
+            document.getElementById("puntuacionFinal").style.display = "block";
+        }
+
+        // Iniciar el juego mostrando la primera pregunta
+        mostrarPregunta();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 7</title>
+</head>
+
+<body>
+  <style>
+    body {
+      background-color: rgb(19, 19, 19);
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .retroceso {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .retroceso img {
+      width: 50px;
+      height: auto;
+    }
+
+    /* Estilos para el menú */
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      text-align: center;
+    }
+
+    .menu li {
+      display: inline-block;
+      position: relative;
+    }
+
+    .menu li a {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .menu li:hover>ul {
+      display: block;
+    }
+
+    /* Estilos para los submenús */
+    .menu ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      padding: 0;
+      border-top: 2px solid #333;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu ul li {
+      display: block;
+    }
+
+    .menu ul li a {
+      padding: 8px 12px;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu ul li a:hover {
+      background-color: #f2f2f2;
+    }
+  </style>
+  </head>
+
+  <body>
+    <ul class="menu">
+      <li><a href="#">Inicio</a></li>
+      <li>
+        <a href="#">Productos</a>
+        <ul>
+          <li><a href="#">Producto 1</a></li>
+          <li><a href="#">Producto 2</a></li>
+          <li><a href="#">Producto 3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Servicios</a>
+        <ul>
+          <li><a href="#">Servicio 1</a></li>
+          <li><a href="#">Servicio 2</a></li>
+          <li><a href="#">Servicio 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="retroceso">
+      <a href="index.html"><img src="img/00.png" alt="Volver al inicio"></a>
+    </div>
+    <script>
+      // JavaScript para mostrar y ocultar los submenús
+      var menuItems = document.querySelectorAll('.menu li');
+
+      for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].addEventListener('click', function () {
+          var subMenu = this.querySelector('ul');
+          if (subMenu) {
+            if (subMenu.style.display === 'block') {
+              subMenu.style.display = 'none';
+            } else {
+              subMenu.style.display = 'block';
+            }
+          }
+        });
+      }
+    </script>
+
+
+  </body>
+
+</html>

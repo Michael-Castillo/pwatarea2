@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 6</title>
+  <style>
+    body {
+      background-color: rgb(119, 36, 11);
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: azure;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 50px;
+    }
+
+    .retroceso {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .retroceso img {
+      width: 50px;
+      height: auto;
+    }
+
+    #lista-tareas {
+      margin: auto;
+      width: fit-content;
+    }
+
+    #nueva-tarea,
+    #agregar-tarea {
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Lista de Tareas</h1>
+  <ul id="lista-tareas">
+    <li>Comprar leche <button class="eliminar">Eliminar</button></li>
+    <li>Ir al gimnasio <button class="eliminar">Eliminar</button></li>
+    <li>Llamar al dentista <button class="eliminar">Eliminar</button></li>
+  </ul>
+  <input type="text" id="nueva-tarea" placeholder="Agregar nueva tarea">
+  <button id="agregar-tarea">Agregar</button>
+  <br>
+  <div class="retroceso">
+    <a href="index.html"><img src="img/00.png" alt="Volver al inicio"></a>
+  </div>
+
+  <script>
+    // Selecciona el botón de agregar tarea y el input de nueva tarea
+    const botonAgregar = document.querySelector("#agregar-tarea");
+    const inputNuevaTarea = document.querySelector("#nueva-tarea");
+
+    // Agrega un listener al botón de agregar tarea
+    botonAgregar.addEventListener("click", () => {
+      // Crea un nuevo elemento li y un botón de eliminar
+      const nuevaTarea = document.createElement("li");
+      const botonEliminar = document.createElement("button");
+      botonEliminar.classList.add("eliminar");
+      botonEliminar.textContent = "Eliminar";
+
+      // Agrega el texto de la nueva tarea y el botón de eliminar al elemento li
+      nuevaTarea.textContent = inputNuevaTarea.value;
+      nuevaTarea.appendChild(botonEliminar);
+
+      // Agrega el elemento li a la lista de tareas
+      document.querySelector("#lista-tareas").appendChild(nuevaTarea);
+
+      // Limpia el input de nueva tarea
+      inputNuevaTarea.value = "";
+
+      // Agrega un listener al botón de eliminar
+      botonEliminar.addEventListener("click", () => {
+        nuevaTarea.remove();
+      });
+    });
+
+    // Agrega un listener a los botones de eliminar
+    document.querySelectorAll(".eliminar").forEach((boton) => {
+      boton.addEventListener("click", () => {
+        boton.parentElement.remove();
+      });
+    });
+  </script>
+</body>
+
+</html>
